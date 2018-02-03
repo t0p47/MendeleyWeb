@@ -1,0 +1,564 @@
+@import "fonts"
+@import "libs"
+@import "vars"
+
+*
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+	&:before, &:after
+		-webkit-box-sizing: border-box
+		-moz-box-sizing: border-box
+		box-sizing: border-box
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+*|*:any-link 
+  cursor: pointer
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	border: 3px solid red
+body input:required:valid,
+body textarea:required:valid
+	border: 3px solid green
+
+html, body
+	height: 100%
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.75
+	font-family: $default-font
+	overflow-x: hidden
+	opacity: 1
+
+.h1, .h2, .h3, .h4, .h5, .h6
+	text-transform: uppercase
+	line-height: 1.4
+
+ul
+	list-style-type: none
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+
+//Common style
+.button
+	display: inline-block
+	border: none
+	color: #fff
+	text-decoration: none
+	background-color: $accent
+	padding: 10px 35px
+	font-size: 13px
+	text-transform: uppercase
+	font-weight: 600
+	letter-spacing: 3px
+	border-radius: 2px
+	text-align: center
+	position: relative
+	outline: none
+	transition: background-color .1s ease
+	&::after
+		transition: background-color .2s ease
+		position: absolute
+		content: ''
+		height: 4px
+		bottom: 0
+		width: 100%
+		background-color: darken($accent, 50%)
+		opacity: .18
+		border-bottom-left-radius: 2px
+		border-bottom-right-radius: 2px
+		left: 0
+	&:focus, &:hover
+		text-decoration: none
+		color: #fff
+	&:hover
+		background-color: lighten($accent, 5%)
+		&::after
+			opacity: .22
+	&:active
+		background-color: darken($accent, 5%)
+		&::after
+			opacity: .32
+
+.small-btn
+	padding: 5px 17px
+
+.checkbox-styled
+	display:none !important
+.checkbox-styled + label:before 
+	font-family: FontAwesome
+	display: inline-block
+.checkbox-styled + label:before
+	content: "\f096"
+.checkbox-styled + label:before
+	letter-spacing: 10px
+.checkbox-styled:checked + label:before
+	content: "\f046"
+.checkbox-styled:checked + label:before
+	letter-spacing: 5px
+
+.table
+	display: table
+	table-layout: fixed
+
+.table-row
+	display: table-row
+
+.table-cell
+	display: table-cell
+	vertical-align: middle
+	table-cell
+
+.list-item
+	display: list-item !important
+
+.text-center
+	text-align: center
+
+.horizontal-list
+	padding: 0
+	margin: 0
+	li
+		display: inline-block
+		a
+			display: block
+			padding: 10px
+			text-decoration: none
+
+.active-tab
+	border-bottom: 3px solid black
+
+//Header styles
+.top_header
+	padding: 7px 0
+	background-color: #ccc
+
+.top_menu
+	padding: 0
+	margin: 0
+	text-transform: uppercase
+	text-align: center
+	li
+		display: inline-block
+		padding: 0
+		margin: 0
+		a
+			text-decoration: none
+			display: block
+			padding: 10px
+			background-color: #ccc
+			color: #3A3A3A
+			font-family: RobotoCondensedRegular
+			transition: all .25s
+		a:hover
+			background-color: #bcbcbc
+
+.top_right
+	padding: 0
+	margin: 0
+	float: right
+	li
+		padding: 9px
+		display: inline-block
+	.top-user-toggler
+		a
+			display: block
+			color: #000
+		a:hover,a:focus
+			text-decoration: none
+
+
+
+.search_panel_button
+	margin: auto
+
+.logo
+	float: left
+	img
+		width: 100px
+
+.top_menu_button
+	background-color: transparent
+	border: none
+	font-size: 34px
+	vertical-align: middle
+
+.search_panel
+	//display: none
+	ul
+		padding: 0
+		margin: 0
+		text-align: center
+		li
+			display: inline-block
+			a
+				text-decoration: none
+				display: block
+				padding: 10px
+
+.search_bar
+	margin-top: 20px
+	ul
+		margin-bottom: 20px
+		li
+			color: #000
+			padding: 10px
+		li:hover
+			border-bottom: 3px solid black
+
+.search_form
+	form
+		border: 1px solid black
+		position: relative
+		input
+			width: 100%
+			border: none
+			padding: .5rem 7.5rem .5rem 3rem
+		button
+			position: absolute
+			top: .2rem
+			right: .2rem
+		i
+			top: 1rem
+			left: 1rem
+			position: absolute
+		
+
+.form-control
+	display: block
+	width: 100%
+
+.top-user-menu
+	display: none
+	z-index: 10
+	padding: 0
+	background-color: #ccc
+	position: absolute
+	right: 0
+	margin-top: 25px
+	width: 280px
+	.user-header
+		text-align: center
+	.user-body
+		background-color: #dddddd
+		a
+			color: #000
+		a:hover
+			text-decoration: none
+	.user-footer
+		background-color: #e7e7e7
+		a
+			background-color: #b2b2b2
+			border: 1px solid #9B9B9B
+			color: #000
+		a:hover
+			background-color: #9d9d9d
+			border: 1px solid #808080
+			text-decoration: none
+
+.search_result
+	background-color: #efefef
+	padding: 15px
+	margin: 20px 0px 20px 0px
+	.search_result_pages
+		float: right
+		a
+			border-bottom: 2px solid transparent
+			margin-right: 2rem
+			display: inline-block
+			padding: 5px 5px 2px 5px
+		a:hover
+			text-decoration: none
+			border-bottom: 2px solid black
+
+.article_container
+	padding: 15px
+	.article_item
+		background-color: #efefef
+		padding: 10px
+		margin-bottom: 30px
+		h3
+			line-height: 1.2
+		.article_container_stats
+			p
+				line-height: 1
+			.stats_text
+				font-size: 10px
+	
+
+
+.center
+	position: absolute
+	left: 0
+	right: 0
+	margin: auto
+
+
+#articles-table
+	a
+		cursor: pointer
+
+//UserLibrary
+//- LeftSide
+
+.sidebar-menu
+	margin: 0
+	padding: 0
+	li
+		position: relative
+		margin: 0
+		padding: 0
+		a
+			padding: 12px 5px 12px 15px
+			display: block
+			i
+				width: 20px
+
+.active_folder
+	color:#000  !important
+
+.panel-folders
+	>ul
+		padding: 0
+		margin: 0
+
+#contextMenu
+	position: absolute
+	display: none
+	ul
+		margin: 2px 0px 0px 0px
+		padding: 5px 0px
+		border-radius: 4px
+		background-color: #ccc
+		font-size: 14px
+		min-width: 160px
+		li
+			a
+				display: block
+				padding: 3px 20px
+			a:hover
+				text-decoration: none
+				background-color: #f5f5f5
+
+.central_toolbar
+	ul
+		margin: 0
+		padding: 0
+	.controller_toolbar
+		float: left
+	.sort_toolbar
+		float: right
+
+.article_selected
+	background-color: #ccc
+
+#articles_list
+	h2
+		margin: 0
+		line-height: 1.2
+		height: 20px
+		font-size: 16px
+		overflow: hidden
+		text-overflow: ellipsis
+		margin-right: 90px
+	p
+		font-size: 12px
+		margin: 0
+		line-height: 1.1
+		overflow: hidden
+		text-overflow: ellipsis
+		height: 18px
+		white-space: nowrap
+		margin-right: 90px
+	ul
+		margin: 0
+		padding: 0
+		li
+			padding: 10px
+			padding-left: 120px
+			position: relative
+	.check_indicator,.favorite_indicator,.read_indicator,.file_indicator
+		text-align: center
+		width: 32px
+		position: absolute
+		line-height: 54px
+		top: 0
+		z-index: 10
+	.check_indicator
+		left: 0
+		input
+			z-index: 10
+		label
+			pointer-events: none
+	.favorite_indicator
+		color:#BBBBBB
+		left: 32px
+		transition: color 0.25s ease
+	.favorite_indicator:hover
+		color: #8D01A2
+	.favorite_indicator_active
+		color: #8D01A2
+	.read_indicator
+		left: 64px
+	.file_indicator
+		left: 80px
+	.date_added
+		position: absolute
+		right: 32px
+		top: 0
+		line-height: 54px
+
+.no_article_selected
+	
+
+#related_tabs
+	display: none
+	>ul
+		margin: 0
+		padding: 0
+		font-size: 0
+		li
+			width: 50%
+			display: inline-block
+			position: relative
+			text-align: center
+			border-bottom: 1px solid #000
+			a
+				font-size: 14px
+				color: #000
+				display: block
+			a:hover,a:focus
+				text-decoration: none
+
+.slidingTabs 
+	position: relative
+	overflow-x: hidden
+	ul
+		padding: 0
+	p
+		margin: 0
+	.article_title
+		margin: 0
+	.article_abstract
+		max-height: 145px
+		overflow: hidden
+		position: relative
+		word-wrap: break-word
+		white-space: normal
+		&:before
+			content: ''
+			height: 65px
+			display: block
+			position: absolute
+			bottom: 0
+			left: -20px
+			right: -20px
+			box-shadow: inset 0 -45px 55px -10px #F6F6F6
+			pointer-events: none
+	.article_abstract_expanded
+		max-height: none
+		&:before
+			content: none
+
+.abstract_less_toggle
+	display: none
+
+.slidingTabs .tab 
+	width: 100%
+	display: inline-block
+	position: relative
+
+.slidingTabs
+	.tab
+		&:nth-child(2)
+			position: absolute
+			top: 0
+			left: 100%
+
+.edit_article_tool
+	position: absolute
+	right: 0
+	top: 10px
+	a
+		padding: 5px
+
+.edit_article_info
+	display: none
+	padding-top: 50px
+
+.sidebar_upload
+	text-align: center
+	#zone10
+		background-color: #ccc
+		padding: 10px
+	.progress
+		span
+			animation: progress .7s linear infinite
+			background: url('../img/progress.gif')
+			display: block
+			height: 1em
+			width: 0
+
+@keyframes progress
+	from
+		background-position: left top
+	to
+		background-position: 30px top
+ 
+.fd-zone 
+	position: relative
+	overflow: hidden
+	/* The following are not required but create a pretty box: */
+	width: 15em
+	margin: 0 auto
+	text-align: center
+
+
+/* Hides <input type="file"> while simulating "Browse" button: */
+.fd-file 
+	opacity: 0
+	font-size: 118px
+	position: absolute
+	right: 0
+	top: 0
+	z-index: 1
+	padding: 0
+	margin: 0
+	cursor: pointer
+	filter: alpha(opacity=0)
+	font-family: sans-serif
+
+.bottom_fixed_instrument
+	position: fixed
+	left: 0
+	bottom: 0
+	height: 100px
+	width: 100%
+	background-color: #d5d5d5
+
+
+
+
+@import "media" // Всегда в конце

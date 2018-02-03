@@ -1,0 +1,8 @@
+.active_folder{
+	color:#fff  !important;
+}
+
+#contextMenu{
+	position: absolute;
+	display: none;
+}
