@@ -686,7 +686,7 @@ class LibraryController extends Controller
 
         $userLibrary = UserLibrary::where('reader_id',$user->id)->get();
 
-        $mids;
+        $mids = array();
 
         foreach ($userLibrary as $value){
             $mids[] = $value->mid;
