@@ -145,7 +145,7 @@ class JournalArticleController extends Controller
 
 	public function receiveWindowsFile(Request $request){
 
-		return Response::json($request);
+		return response()->file(storage_path("app/public/19/ParasitolUnitedJ911-2870602_004750.pdf"));
 
 	}
 
