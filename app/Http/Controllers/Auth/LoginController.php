@@ -58,8 +58,11 @@ class LoginController extends Controller
             //return $this->response->errorInternal;
         }
 
+
+        $currentUser = Auth::user()->id;
+
         //return Response::array(compact('token'))->setStatusCode(200);
-        return  $this->response->array(compact('token'))->setStatusCode(200);
+        return  $this->response->array(compact('token','currentUser'))->setStatusCode(200);
     }
 
     //Get all users
