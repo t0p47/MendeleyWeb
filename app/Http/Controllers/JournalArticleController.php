@@ -353,7 +353,8 @@ class JournalArticleController extends Controller
 		JournalArticle::whereIn("id",$mids)->whereNotIn("is_new",["all","server",$requestDevice])->update(["is_new" => "all"]);
 
 		for($i = 0;$i<count($articles);$i++){
-            $articles[$i]->favorite = $userLibrary[$i]->favorite;
+            //$articles[$i]->favorite = $userLibrary[$i]->favorite;
+            $articles[$i]->favorite = (UserLibrary::where("mid",$articles[$i]->id)->first())->favorite;
         }
 
 		return $articles;
