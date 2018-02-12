@@ -788,6 +788,17 @@ resetCheckboxOnRefresh();
 		}
 	});
 
+	//Check upload file size
+	$('#addJournalArticleID #filepath').bind('change', function(){
+
+		if(this.files[0].size > 26000000){
+			alert("Превышен размер файла");
+			$('#addJournalArticleID #filepath').val("");
+		}
+		
+
+	});
+
 	//CreateArticle
 	$("#addJournalArticleID").on('submit',function(e){
 		e.preventDefault();
@@ -808,12 +819,22 @@ resetCheckboxOnRefresh();
 			data: data,
 			success: function(data){
 				console.log("Success: ",data);
-				$.fancybox.close();
-				jQuery('#addJournalArticleID').each(function(){
-					this.reset();
-				});
-				console.log("Filepath: ".data);
-				AddNewArticleToList(data);
+				if(data.error==true){
+
+					if(data.type=="filesize"){
+						alert("Превышен размер файла");
+						$('#addJournalArticleID #filepath').val("");
+					}
+
+				}else{
+					$.fancybox.close();
+					jQuery('#addJournalArticleID').each(function(){
+						this.reset();
+					});
+					console.log("Filepath: ".data);
+					AddNewArticleToList(data);
+				}
+				
 			},
 			error: function(data){
 				console.log("Error: ",data);

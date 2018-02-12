@@ -405,35 +405,6 @@ class LibraryController extends Controller
             $value = $this->emptyToNull($value);
         });
 
-
-        if($request->filepath){
-            if($request->file('filepath')->isValid()){
-                //$path = $request->filepath->storeAs('images/'.$user_id,'filename.pdf');
-                if($request->file('filepath')->getClientSize()<26000000){
-                    $originalName = $request->filepath->getClientOriginalName();
-                    $path = $request->filepath->storeAs('public/'.$user_id,$originalName);
-                    $url = Storage::url($path);
-
-                    $dbFileName = '/'.$user_id.'/'.$originalName;
-
-                    /*$response = "Path ".$path.", url ".$url.", originalName ". $originalName;
-                    return view('testing')->with([
-                        'responseFile'=> $response,
-                    ]);*/
-                }else{
-                    $return_data = [
-                        "error"=>true,
-                        "type"=>"filesize"
-                    ];
-                    return Response::json($return_data);
-                }
-                
-
-                array_set($data,'filepath',$dbFileName);
-
-            }
-        }
-
         $journalArticle = new JournalArticle;
         $journalArticle->fill($data);
         $journalArticle->save();
@@ -447,26 +418,15 @@ class LibraryController extends Controller
 
         $insertedID = $journalArticle->id;
 
-        //$this->saveFile($request,$user_id,$insertedID);
-
-        $this->addToLibrary('journalarticles',$insertedID,$user_id);
-
-        $this->addToUserLibrary($insertedID,$user_id,true);
-        
-        return Response::json($journalArticle);        
-    }
-
-    function saveFile($request, $user_id, $jid){
-
         if($request->filepath){
             if($request->file('filepath')->isValid()){
                 //$path = $request->filepath->storeAs('images/'.$user_id,'filename.pdf');
                 if($request->file('filepath')->getClientSize()<26000000){
                     $originalName = $request->filepath->getClientOriginalName();
-                    $path = $request->filepath->storeAs('public/'.$user_id,$originalName);
+                    $path = $request->filepath->storeAs('public/'.$user_id.'/'.$insertedID,$originalName);
                     $url = Storage::url($path);
 
-                    $dbFileName = '/'.$user_id.'/'.$originalName;
+                    $dbFileName = '/'.$user_id.'/'.$insertedID.'/'.$originalName;
 
                     /*$response = "Path ".$path.", url ".$url.", originalName ". $originalName;
                     return view('testing')->with([
@@ -480,12 +440,20 @@ class LibraryController extends Controller
                     return Response::json($return_data);
                 }
                 
+                //JournalArticle::whereIn("id",$mids)->where("is_new","server")->update(["is_new"=>$requestDevice]);
 
-                array_set($data,'filepath',$dbFileName);
+
+                JournalArticle::whereId($insertedID)->update(['filepath'=>$dbFileName]);
+                //array_set($data,'filepath',$dbFileName);
 
             }
         }
 
+        $this->addToLibrary('journalarticles',$insertedID,$user_id);
+
+        $this->addToUserLibrary($insertedID,$user_id,true);
+        
+        return Response::json($journalArticle);        
     }
 
     function checkJournalStatus($status, $uid){
