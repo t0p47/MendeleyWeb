@@ -447,11 +447,45 @@ class LibraryController extends Controller
 
         $insertedID = $journalArticle->id;
 
+        //$this->saveFile($request,$user_id,$insertedID);
+
         $this->addToLibrary('journalarticles',$insertedID,$user_id);
 
         $this->addToUserLibrary($insertedID,$user_id,true);
         
         return Response::json($journalArticle);        
+    }
+
+    function saveFile($request, $user_id, $jid){
+
+        if($request->filepath){
+            if($request->file('filepath')->isValid()){
+                //$path = $request->filepath->storeAs('images/'.$user_id,'filename.pdf');
+                if($request->file('filepath')->getClientSize()<26000000){
+                    $originalName = $request->filepath->getClientOriginalName();
+                    $path = $request->filepath->storeAs('public/'.$user_id,$originalName);
+                    $url = Storage::url($path);
+
+                    $dbFileName = '/'.$user_id.'/'.$originalName;
+
+                    /*$response = "Path ".$path.", url ".$url.", originalName ". $originalName;
+                    return view('testing')->with([
+                        'responseFile'=> $response,
+                    ]);*/
+                }else{
+                    $return_data = [
+                        "error"=>true,
+                        "type"=>"filesize"
+                    ];
+                    return Response::json($return_data);
+                }
+                
+
+                array_set($data,'filepath',$dbFileName);
+
+            }
+        }
+
     }
 
     function checkJournalStatus($status, $uid){
