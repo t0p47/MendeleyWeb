@@ -143,9 +143,17 @@ class JournalArticleController extends Controller
 		return $articles;
 	}
 
-	public function receiveWindowsFile(){
+	public function receiveWindowsFile(Request $request){
 
-		return response()->file(storage_path("app/public/19/ParasitolUnitedJ911-2870602_004750.pdf"));
+		$jid = $request->jid;
+
+		$article = JournalArticle::whereId($jid)->first();
+
+		//return $article->filepath;
+
+		return response()->file(storage_path("app/public".$article->filepath));
+
+		//return response()->file(storage_path("app/public/19/ParasitolUnitedJ911-2870602_004750.pdf"));
 
 	}
 

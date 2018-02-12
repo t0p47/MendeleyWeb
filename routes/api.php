@@ -68,7 +68,7 @@ $api->version('v1',['middleware' => 'api.auth'], function($api){
 	//Route::post('view-pdf', 'JournalArticleController@viewPdf');
 	$api->post('download/article','App\Http\Controllers\JournalArticleController@viewPdf');
 
-	$api->get('windows/send/file','App\Http\Controllers\JournalArticleController@receiveWindowsFile');
+	$api->post('windows/send/file','App\Http\Controllers\JournalArticleController@receiveWindowsFile');
 
 	$api->post('android/folder/request','App\Http\Controllers\FolderController@sendRequestBack');
 
