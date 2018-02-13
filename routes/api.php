@@ -76,6 +76,6 @@ $api->version('v1',['middleware' => 'api.auth'], function($api){
 
 	$api->post('android/article/request','App\Http\Controllers\JournalArticleController@sendRequestBack');
 
-	$api->get('android/send/file','App\Http\Controllers\JournalArticleController@receiveAndroidFile')
+	$api->get('android/send/file','App\Http\Controllers\JournalArticleController@receiveAndroidFile');
 	
 });
