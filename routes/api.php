@@ -49,6 +49,7 @@ $api->version('v1',function($api){
 	//Refresh token
 	$api->get('refresh-token','App\Http\Controllers\Auth\LoginController@getToken');
 
+	$api->get('android/send/fileTest','App\Http\Controllers\JournalArticleController@receiveAndroidFile');
 
 });
 

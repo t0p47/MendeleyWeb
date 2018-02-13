@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 	$('#articles_list').on('click','li .file_indicator',function(e){
 		e.stopPropagation();
-		alert("ShowPDF");
+		//alert("ShowPDF");
 		var filepath = $(this).attr('data-filepath');
 
 		$("#pdf-form input[name='filepath']").val(filepath);
