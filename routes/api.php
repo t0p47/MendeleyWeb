@@ -48,6 +48,8 @@ $api->version('v1',function($api){
 
 	//Refresh token
 	$api->get('refresh-token','App\Http\Controllers\Auth\LoginController@getToken');
+
+
 });
 
 $api->version('v1',['middleware' => 'api.auth'], function($api){
@@ -73,5 +75,7 @@ $api->version('v1',['middleware' => 'api.auth'], function($api){
 	$api->post('android/folder/request','App\Http\Controllers\FolderController@sendRequestBack');
 
 	$api->post('android/article/request','App\Http\Controllers\JournalArticleController@sendRequestBack');
+
+	$api->get('android/send/file','App\Http\Controllers\JournalArticleController@receiveAndroidFile')
 	
 });

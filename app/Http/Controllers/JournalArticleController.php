@@ -157,6 +157,12 @@ class JournalArticleController extends Controller
 
 	}
 
+	public function receiveAndroidFile(){
+
+		return response()->file(storage_path("app/public/19/ParasitolUnitedJ911-2870602_004750.pdf"));
+		
+	}
+
 	public function sendAndroidArticles(Request $request){
 
 		$user = JWTAuth::parseToken()->authenticate();
