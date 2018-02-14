@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `admin_users` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(254) COLLATE utf8_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `ip_restrict` enum('yes','no') COLLATE utf8_unicode_ci NOT NULL,
